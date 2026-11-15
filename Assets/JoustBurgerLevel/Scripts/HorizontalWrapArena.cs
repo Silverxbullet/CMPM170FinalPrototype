@@ -5,8 +5,8 @@ namespace PrototypeFinalProject
     [DisallowMultipleComponent]
     public sealed class HorizontalWrapArena : MonoBehaviour
     {
-        [SerializeField] private Transform leftBoundary;
-        [SerializeField] private Transform rightBoundary;
+        [SerializeField] public Transform leftBoundary;
+        [SerializeField] public Transform rightBoundary;
         [SerializeField, Min(0.1f)] private float gizmoHeight = 20f;
 
         public void SetBoundaries(Transform left, Transform right)
