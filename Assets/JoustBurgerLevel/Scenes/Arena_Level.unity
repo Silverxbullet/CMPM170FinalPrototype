@@ -2500,6 +2500,51 @@ Transform:
   m_Children: []
   m_Father: {fileID: 2145604383}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &502258433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 502258435}
+  - component: {fileID: 502258434}
+  m_Layer: 0
+  m_Name: PrototypeHUD
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &502258434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502258433}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2f6e8690b214d24c9b6eed514e38821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  player: {fileID: 0}
+--- !u!4 &502258435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 502258433}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.30936, y: 4.67087, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1862286037
 GameObject:
   m_ObjectHideFlags: 0
@@ -2732,6 +2777,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   move_speed: 6
   jump_force: 14
+  invulnerable_time: 0.8
   ground_check_origin: {fileID: 329243903}
   ground_check_radius: 0.2
   ground_layer:
@@ -2743,6 +2789,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0723ff68a2f59d84e968bba70b77ecf6, type: 2}
   - {fileID: 11400000, guid: 0d5078da9fca79e41a94ca069b8ca07c, type: 2}
   BurgerLayerPrefab: {fileID: 134863712837076670, guid: 03bf513cfe0064f4b81d6560d65e6691, type: 3}
+  attack_point: {fileID: 0}
+  attack_size: {x: 1.6, y: 1.2}
+  attack_cooldown: 0.35
+  attack_invulnerability: 0.15
 --- !u!114 &2145604387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2764,3 +2814,4 @@ SceneRoots:
   - {fileID: 1261}
   - {fileID: 2145604383}
   - {fileID: 1862286038}
+  - {fileID: 502258435}

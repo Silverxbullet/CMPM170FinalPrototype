@@ -4,5 +4,5 @@ using UnityEngine;
 public class BurgerLayerSO : ScriptableObject
 {
     public Sprite sprite;
-    public string name;
+    public new string name;
 }

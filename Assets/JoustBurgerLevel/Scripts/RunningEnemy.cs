@@ -7,6 +7,15 @@ public class RunningEnemy : CharacterBase
     protected override void Awake() {
         base.Awake();
         horizontal_move = 1f;
+        on_died += HandleDied;
+    }
+
+    private void OnDestroy() {
+        on_died -= HandleDied;
+    }
+
+    private void HandleDied(CharacterBase character) {
+        Destroy(gameObject);
     }
 
     public void OnEnable() {
