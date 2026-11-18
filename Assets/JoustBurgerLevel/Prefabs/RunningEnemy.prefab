@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1140654177603988145}
   - component: {fileID: 6479287778727396721}
   - component: {fileID: 6682218795515369619}
+  - component: {fileID: 8522307421867411048}
   m_Layer: 0
   m_Name: RunningEnemy
   m_TagString: Untagged
@@ -189,6 +190,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::RunningEnemy
   move_speed: 6
   jump_force: 8
+  invulnerable_time: 0.8
   ground_check_origin: {fileID: 7162066799733603441}
   ground_check_radius: 0.2
   ground_layer:
@@ -198,6 +200,20 @@ MonoBehaviour:
   burger_layer_origin: {fileID: 6032356402337254620}
   layers: []
   BurgerLayerPrefab: {fileID: 134863712837076670, guid: 03bf513cfe0064f4b81d6560d65e6691, type: 3}
+--- !u!114 &8522307421867411048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496261201373948870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 21903ab669a5b4642b841c83471bde3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::HitFlash
+  flash_color: {r: 1, g: 1, b: 0, a: 1}
+  flash_duration: 0.12
 --- !u!1 &3721221260981623821
 GameObject:
   m_ObjectHideFlags: 0

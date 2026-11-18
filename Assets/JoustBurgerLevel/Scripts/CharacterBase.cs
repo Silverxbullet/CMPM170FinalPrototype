@@ -16,6 +16,7 @@ public class CharacterBase : MonoBehaviour
     protected float horizontal_move;
     public bool is_grounded;
     protected float invulnerable_until;
+    protected float knockback_until;
 
     public event Action on_ledge_fall;
     public event Action<CharacterBase> on_died;
@@ -49,7 +50,7 @@ public class CharacterBase : MonoBehaviour
     protected void Update() {
         CheckGrounded();
 
-        if (rigidbody != null) {
+        if (rigidbody != null && Time.time >= knockback_until) {
             rigidbody.linearVelocityX = move_speed * horizontal_move;
         }
     }
@@ -128,6 +129,23 @@ public class CharacterBase : MonoBehaviour
         bool lostLayer = TryRemoveTopLayer(out _);
 
         if (lostLayer) {
+            knockback_until = Time.time + 0.2f;
+            float push_direction = 1f;
+
+            if (source != null && source.transform.position.x > transform.position.x) {
+                push_direction = -1f;
+            }
+
+            if (rigidbody != null) {
+                rigidbody.linearVelocity = new Vector2(push_direction * 7f, 5f);
+            }
+
+            HitFlash hit_flash = GetComponent<HitFlash>();
+
+            if (hit_flash != null) {
+                hit_flash.Flash();
+            }
+
             string attacker = source != null ? source.name : "a hit";
             Debug.Log(name + " lost a layer from " + attacker + ". Layers left: " + LayerCount, this);
         }

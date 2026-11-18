@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ public class PlayerController : CharacterBase
     public Vector2 attack_size = new Vector2(1.6f, 1.2f);
     public float attack_cooldown = 0.35f;
     public float attack_invulnerability = 0.15f;
+    public GameObject attack_visual;
 
     private PlayerInputActions actions;
     private float next_attack_time;
@@ -66,10 +68,20 @@ public class PlayerController : CharacterBase
 
         next_attack_time = Time.time + attack_cooldown;
 
+        if (attack_visual != null) {
+            StartCoroutine(ShowAttackVisual());
+        }
+
         // Brief protection prevents trading damage in the same frame.
         GrantInvulnerability(attack_invulnerability);
 
         PerformAttack();
+    }
+
+    private IEnumerator ShowAttackVisual() {
+        attack_visual.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        attack_visual.SetActive(false);
     }
 
     private void PerformAttack() {
@@ -102,6 +114,11 @@ public class PlayerController : CharacterBase
             }
 
             if (target.TryRemoveTopLayer(out BurgerLayerSO stolenLayer)) {
+                HitFlash hit_flash = target.GetComponent<HitFlash>();
+
+                if (hit_flash != null) {
+                    hit_flash.Flash();
+                }
 
                 AddLayer(stolenLayer);
                 string layerName = stolenLayer != null ? stolenLayer.name : "a layer";
