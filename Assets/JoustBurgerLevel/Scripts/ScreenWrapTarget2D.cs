@@ -39,7 +39,7 @@ namespace PrototypeFinalProject
         private HorizontalWrapArena FindArenaInThisScene()
         {
             HorizontalWrapArena match = null;
-            foreach (var candidate in Object.FindObjectsByType<HorizontalWrapArena>(FindObjectsSortMode.None))
+            foreach (var candidate in Object.FindObjectsByType<HorizontalWrapArena>())
             {
                 if (!candidate.isActiveAndEnabled || candidate.gameObject.scene != gameObject.scene) continue;
                 if (match != null)
